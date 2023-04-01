@@ -1,0 +1,22 @@
+.table-wrapper {
+  width: 95%;
+  height: 90%;
+  overflow-x: scroll;
+  &__title {
+    width: 90%;
+    font-size: 1.125rem;
+    color: #455a64;
+    margin: 0 auto;
+    margin-top: 1rem;
+    font-weight: 400;
+  }
+
+  &__subtitle {
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    color: #99abb4;
+    font-weight: 400;
+  }
+
+}
