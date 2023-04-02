@@ -77,6 +77,8 @@ export default {
             created_by: "Creado Por",
             assigned_to: "Asignado A",
             completation_date: "Fecha de terminacion",
+            complete_confirmation: "Marcar tarea como finalizada?",
+            status: "status",
         };
     },
 };

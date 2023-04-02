@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import type { Ref } from 'vue';
 import  type { Link } from '@/types/Link'
+import TheAlert from '@/components/TheAlert.vue'
 
 const isNavigationOpen: Ref<boolean> = ref(false)
 
@@ -54,6 +55,7 @@ v-app
       )  {{ link.text }}
       
   v-main 
+    TheAlert
     RouterView
 
 </template>

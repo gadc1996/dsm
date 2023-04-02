@@ -12,6 +12,7 @@ class TaskUpdateRequest extends FormRequest
             'description' => ['sometimes', 'string'],
             'completation_date' => ['sometimes', 'date'],
             'assigned_to_id' => ['sometimes', 'numeric', 'exists:users,id'],
+            'is_completed' => ['sometimes', 'boolean'],
         ];
     }
 }

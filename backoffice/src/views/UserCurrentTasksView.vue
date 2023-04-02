@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useTasksStore } from "@/stores/task";
 import { onMounted, ref, watch } from "vue";
-// import ModalUser from "@/components/modals/ModalUser.vue";
+import ModalTaskComplete from "@/components/modals/ModalTaskComplete.vue";
 
 const taskStore = useTasksStore();
 const currentPage = ref(1);
@@ -10,17 +10,22 @@ onMounted(() => {
     taskStore.loadUserTasks();
 });
 
+function completeTask(task) {
+  taskStore.openModalCompleteTask(task)
+}
+
 </script>
 
 <template lang="pug">
 .view
-  //- ModalUser
+  ModalTaskComplete
   h2.view__title Mis Tareas
   v-row.d-flex.align-center.flex-column.mt-4
     v-card.table-wrapper
       v-card.task(
         theme="dark"
         v-for="task in taskStore.userTasks"
+        @click="completeTask(task)"
       )
         v-card-title {{strings.description}} {{task.description}}
         v-card-subtitle {{strings.created_by}} {{task.created_by.name}}

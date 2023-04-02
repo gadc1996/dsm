@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useUserStore } from "@/stores/user";
 import { onMounted, ref, watch } from "vue";
-// import ModalUser from "@/components/modals/ModalUser.vue";
+import ModalUser from "@/components/modals/ModalUser.vue";
 
 const userStore = useUserStore();
 const currentPage = ref(1);
@@ -17,7 +17,7 @@ watch(currentPage, (value) => {
 
 <template lang="pug">
 .view
-  //- ModalUser
+  ModalUser
   h2.view__title Usuarios
   v-row.d-flex.align-center.flex-column.mt-4
     v-card.table-wrapper

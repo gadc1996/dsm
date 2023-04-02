@@ -34,6 +34,7 @@ class TaskController extends Controller
     public function update(TaskUpdateRequest $request, Task $task): JsonResponse
     {
         $data = $request->validated();
+        \Log::info($data);
         $task->update($data);
 
         return response()->json($task, 200);
