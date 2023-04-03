@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Task;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class TaskSeeder extends Seeder
@@ -15,6 +15,9 @@ class TaskSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Task::factory(50)->create([
+            'created_by_id' => random_int(0, User::count()),
+            'assigned_to_id' => random_int(0, User::count())
+        ]);
     }
 }

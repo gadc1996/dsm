@@ -18,15 +18,17 @@ export const useTasksStore = defineStore({
       }
     },
     isModalTaskCompleteVisible: false,
-    selectedTask: {}
+    selectedTask: {},
+    authUser: {}
   }),
   getters: {},
   actions: {
     ...crud.actions,
-    async loadUserTasks(page = 1): Promise<void> {
+    async loadUserTasks(): Promise<void> {
+      await this.loadAuthUser()
       this.setHeaders()
       await this.$axios
-        .get('users/2/tasks/current')
+        .get(`users/${this.$state.authUser.id}/tasks/current`)
         .then((response: AxiosResponse) => {
           this.$state.userTasks = response.data
         })
@@ -34,10 +36,11 @@ export const useTasksStore = defineStore({
           alert.setAlert('error', 'Error, intenta de nuevo')
         })
     },
-    async loadPendingUserTasks(page = 1): Promise<void> {
+    async loadPendingUserTasks(): Promise<void> {
+      await this.loadAuthUser()
       this.setHeaders()
       await this.$axios
-        .get('users/2/tasks/pending')
+        .get(`users/${this.$state.authUser.id}/tasks/pending`)
         .then((response: AxiosResponse) => {
           this.$state.pendingTasks = response.data
         })
@@ -62,6 +65,7 @@ export const useTasksStore = defineStore({
         })
     },
     async initialize() {
+      await this.loadAuthUser()
       await this.loadResources()
       await this.loadUsers()
     },
@@ -82,6 +86,16 @@ export const useTasksStore = defineStore({
           const index = this.$state.userTasks.findIndex(task => task.id == this.$state.selectedTask.id)
           this.$state.userTasks.splice(index, 1)
           this.closeModalCompleteTask()
+        })
+        .catch(() => {
+          alert.setAlert('error', 'Error, intenta de nuevo')
+        })
+    },
+    async loadAuthUser() {
+      await this.$axios
+        .get(`/auth/user`)
+        .then((response: AxiosResponse) => {
+          this.$state.authUser = response.data
         })
         .catch(() => {
           alert.setAlert('error', 'Error, intenta de nuevo')

@@ -6,6 +6,14 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class TaskStoreRequest extends FormRequest
 {
+
+    public function prepareForValidation()
+    {
+        $this->merge([
+            'created_by_id' => auth()->user()->id
+        ]);
+    }
+
     public function rules()
     {
         return [

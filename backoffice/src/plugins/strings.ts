@@ -79,6 +79,10 @@ export default {
             completation_date: "Fecha de terminacion",
             complete_confirmation: "Marcar tarea como finalizada?",
             status: "status",
+            task: "Tarea",
+            tasks_table: "Tabla de tareas",
+            tasks_table_subtitle:
+                "Aqui podras agregar, editar o borrar tareas",
         };
     },
 };

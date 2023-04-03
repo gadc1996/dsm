@@ -11,7 +11,7 @@ class DelayController extends Controller
 {
     public function __construct()
     {
-        $this->authorizeResource(Delay::class);
+        // $this->authorizeResource(Delay::class);
     }
 
     public function index(): JsonResponse

@@ -37,27 +37,9 @@ const links: readonly Link[] = [
 
 <template lang="pug">
 v-app 
-  v-app-bar
-    template(v-slot:prepend)
-      v-app-bar-nav-icon(
-        @click="isNavigationOpen = !isNavigationOpen"
-      )
-      
-  v-navigation-drawer(
-    v-model="isNavigationOpen"
-  )
-    v-list 
-      v-list-item(
-        v-for="link in links"
-        :prepend-icon="link.icon"
-        :to="link.to"
-        link
-      )  {{ link.text }}
-      
   v-main 
     TheAlert
     RouterView
-
 </template>
 
 <style></style>

@@ -22,12 +22,14 @@ Route::group([
     'prefix' => 'auth'
 ], function () {
     Route::post('login', [AuthController::class, 'login']);
+    Route::get('user', [AuthController::class, 'user']);
 });
 
 Route::group([
     // 'middleware' => 'auth:api'
 ], function () {
 
+    Route::get('users/{user}/tasks', [UserTaskController::class, 'index']);
     Route::get('users/{user}/tasks/current', [UserTaskController::class, 'current']);
     Route::get('users/{user}/tasks/pending', [UserTaskController::class, 'pending']);
     Route::apiResources([

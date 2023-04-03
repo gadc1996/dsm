@@ -44,7 +44,7 @@ class Task extends Model
 
     public function scopeCurrent($query)
     {
-        $query->whereDate('completation_date', now());
+        $query->whereDate('completation_date', '<=', now());
     }
 
     public function scopePending($query)

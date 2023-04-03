@@ -21,8 +21,8 @@ watch(currentPage, (value) => {
   h2.view__title Tareas
   v-row.d-flex.align-center.flex-column.mt-4
     v-card.table-wrapper
-      h4.table-wrapper__title {{ strings.users_table }}
-      h5.table-wrapper__subtitle {{ strings.users_table_subtitle }}
+      h4.table-wrapper__title {{ strings.tasks_table }}
+      h5.table-wrapper__subtitle {{ strings.tasks_table_subtitle }}
       v-btn.add-button(
         prepend-icon="mdi-plus"
         color="success"
